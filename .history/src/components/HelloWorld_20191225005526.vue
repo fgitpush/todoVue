@@ -26,7 +26,7 @@ export default {
   methods:{
     submitTodo()
     {
-      this.todos.push({ todo: this.something, completed: "X" });
+      this.todos.push({ todo: this.something, completed: "todo" });
       this.something = ''
     }
   }

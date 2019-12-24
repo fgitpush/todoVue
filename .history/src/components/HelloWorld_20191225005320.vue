@@ -5,7 +5,7 @@
     <ul>
       <li v-for="(item, i) in todos" :key="i" style="display:block">
           <span id="item"> {{ item.todo }}</span>
-          <span  id="progress"> {{ item.completed }}</span>
+          <span @click="done" id="progress"> {{ item.completed }}</span>
       </li>
     </ul>
   </div>
@@ -26,7 +26,7 @@ export default {
   methods:{
     submitTodo()
     {
-      this.todos.push({ todo: this.something, completed: "X" });
+      this.todos.push({ todo: this.something, completed: "todo" });
       this.something = ''
     }
   }

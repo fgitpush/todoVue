@@ -1,11 +1,10 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <input v-model="something" @keydown.enter="submitTodo" type="text" placeholder="Enter Todo">
-    <ul>
-      <li v-for="(item, i) in todos" :key="i" style="display:block">
-          <span id="item"> {{ item.todo }}</span>
-          <span  id="progress"> {{ item.completed }}</span>
+    <input v-model="something" @keydown.enter="submitTodo" type="text" name="todo" placeholder="Todo">
+    <ul id="example-1">
+      <li v-for="(item, i) in todos" :key="i">
+        {{ item.todo }}
       </li>
     </ul>
   </div>
@@ -26,7 +25,7 @@ export default {
   methods:{
     submitTodo()
     {
-      this.todos.push({ todo: this.something, completed: "X" });
+      this.todos.push({ todo: this.something, completed: false });
       this.something = ''
     }
   }
