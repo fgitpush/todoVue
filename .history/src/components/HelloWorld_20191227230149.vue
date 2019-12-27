@@ -4,12 +4,10 @@
     <input v-model="something" @keydown.enter="submitTodo" type="text" placeholder="Enter Todo">
     <ul>
       <table>
-      <tr>
-      </tr>
       <li v-for="(item, i) in todos" :key="i" style="display:block">
         <tr>
-            <td><span id="item">{{ item.todo }}</span></td> |
-            <td @click="done(i)">Done</td>
+            <td><span id="item">{{ item.todo }}</span></td>
+           <!-- <td><span id="item">{{ i }}</span></td> -->
         </tr>
       </li>
       </table>
@@ -42,12 +40,9 @@ export default {
     loadTodo()
     {
       for (var i = 0; i < localStorage.length; i++){
-         this.todos.push({ todo: localStorage.getItem(localStorage.key(i))})
+         this.todos.push({ todo: localStorage[i]})
+         //this.todos.push({ id: i});
       }
-    },
-    done(i)
-    {
-      localStorage.removeItem(localStorage.key(i));
     }
   },
    mounted(){

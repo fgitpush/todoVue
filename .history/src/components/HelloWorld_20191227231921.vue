@@ -9,7 +9,9 @@
       <li v-for="(item, i) in todos" :key="i" style="display:block">
         <tr>
             <td><span id="item">{{ item.todo }}</span></td> |
-            <td @click="done(i)">Done</td>
+            <td @click="delete">Delete</td> |
+            <td @click="done">Done</td>
+            <!--<td><span id="item">{{ i+1 }}</span></td> -->
         </tr>
       </li>
       </table>
@@ -43,11 +45,16 @@ export default {
     {
       for (var i = 0; i < localStorage.length; i++){
          this.todos.push({ todo: localStorage.getItem(localStorage.key(i))})
+         //this.todos.push({ id: i});
       }
     },
-    done(i)
+    delete()
     {
-      localStorage.removeItem(localStorage.key(i));
+      //
+    },
+    done()
+    {
+      //
     }
   },
    mounted(){

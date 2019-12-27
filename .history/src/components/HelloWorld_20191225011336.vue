@@ -3,16 +3,9 @@
     <h1>{{ msg }}</h1>
     <input v-model="something" @keydown.enter="submitTodo" type="text" placeholder="Enter Todo">
     <ul>
-      <table>
-      <tr>
-      </tr>
       <li v-for="(item, i) in todos" :key="i" style="display:block">
-        <tr>
-            <td><span id="item">{{ item.todo }}</span></td> |
-            <td @click="done(i)">Done</td>
-        </tr>
+          <span id="item"> {{ item.todo }}</span>
       </li>
-      </table>
     </ul>
   </div>
 </template>
@@ -30,32 +23,16 @@ export default {
     msg: String,
   },
   methods:{
-    init(){
-      this.loadTodo()
-    },
     submitTodo()
     {
-      localStorage.setItem(this.something, this.something)
-      this.todos.push({ todo: this.something})
+      this.todos.push({ todo: this.something});
       this.something = ''
-    },
-    loadTodo()
-    {
-      for (var i = 0; i < localStorage.length; i++){
-         this.todos.push({ todo: localStorage.getItem(localStorage.key(i))})
-      }
-    },
-    done(i)
-    {
-      localStorage.removeItem(localStorage.key(i));
     }
-  },
-   mounted(){
-    this.init()
   }
 }
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

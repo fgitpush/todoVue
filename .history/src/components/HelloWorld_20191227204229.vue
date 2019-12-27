@@ -3,16 +3,9 @@
     <h1>{{ msg }}</h1>
     <input v-model="something" @keydown.enter="submitTodo" type="text" placeholder="Enter Todo">
     <ul>
-      <table>
-      <tr>
-      </tr>
       <li v-for="(item, i) in todos" :key="i" style="display:block">
-        <tr>
-            <td><span id="item">{{ item.todo }}</span></td> |
-            <td @click="done(i)">Done</td>
-        </tr>
+          <span id="item"> {{ item.todo }}</span>
       </li>
-      </table>
     </ul>
   </div>
 </template>
@@ -31,28 +24,28 @@ export default {
   },
   methods:{
     init(){
-      this.loadTodo()
+      //call API
+      //Setup game
     },
     submitTodo()
     {
-      localStorage.setItem(this.something, this.something)
-      this.todos.push({ todo: this.something})
+      localStorage.setItem(this.something, this.something);
+      this.todos.push({ todo: this.something});
       this.something = ''
     },
     loadTodo()
     {
+      localStorage.setItem(this.something, this.something);
+      this.todos.push({ todo: this.something});
+      this.something = ''
       for (var i = 0; i < localStorage.length; i++){
-         this.todos.push({ todo: localStorage.getItem(localStorage.key(i))})
+         this.todos.push({ todo: localStorage[i]});
       }
-    },
-    done(i)
-    {
-      localStorage.removeItem(localStorage.key(i));
     }
   },
-   mounted(){
-    this.init()
-  }
+  mounted:{
+    loadTodo()
+  },
 }
 </script>
 

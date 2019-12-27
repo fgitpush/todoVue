@@ -47,6 +47,7 @@ export default {
     },
     done(i)
     {
+      console.log(localStorage.key(i))
       localStorage.removeItem(localStorage.key(i));
     }
   },
